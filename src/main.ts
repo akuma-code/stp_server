@@ -1,7 +1,7 @@
 import { config } from 'dotenv'
 config()
 import express from 'express'
-import sequelize from './DB/sequelize';
+import { sequelize } from './DB/sequelize';
 
 
 
@@ -32,9 +32,10 @@ async function LISTEN() {
 
     try {
         await sequelize.authenticate()
-        await sequelize.sync({ alter: true })
+        await sequelize.sync({ alter: true, force: true })
+        console.clear()
+        console.log('Connection has been established successfully.');
         app.listen(PORT, () => {
-            console.clear()
             console.log(`Running on ${HOST}:${PORT}`)
         });
     } catch (error) {

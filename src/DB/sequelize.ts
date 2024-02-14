@@ -11,7 +11,7 @@ const db_host = process.env.DB_HOST || 'localhost'
 const db_port = process.env.DB_PORT || '5432'
 
 
-export default new Sequelize(
+export const sequelize = new Sequelize(
     db_name, db_user, db_pass,
     {
         dialect: 'postgres',
