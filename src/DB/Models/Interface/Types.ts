@@ -5,6 +5,12 @@ export type IGlassPropsFields =
     | 'soundproof'
     | 'hitproof'
     | 'solarproof'
-export type IGlassProps = Record<IGlassPropsFields, boolean> & { formula: string }
+export type IFormulaProps = {
+    id?: number
+    formula: string,
+    glassPropId?: number,
+}
+export type IGlassProps = Partial<Record<IGlassPropsFields, boolean>> & IFormulaProps
 
-export type IFormulaProps = { formula: string, glassPropId?: number }
+
+export type GlassBoolPropsPartial = Partial<Record<IGlassPropsFields, boolean>>

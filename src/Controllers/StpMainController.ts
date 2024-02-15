@@ -5,7 +5,13 @@ import { formulaPreset } from "../DB/Models/StpPreset/GalssPropsPreset"
 export class StpController {
     static async getAll(req: Request, res: Response, next: NextFunction) {
         try {
+            if (req.query) {
+                const { toplevel } = req.query as { toplevel: true | undefined }
 
+                const stps = await StpMain.findAll(toplevel ? { include: [] } : { include: [{ all: true, nested: true }] })
+                console.log('stps', stps)
+                return res.json(stps)
+            }
             const stps = await StpMain.findAll({ include: [{ all: true, nested: true }] })
 
             console.log('stps', stps)
@@ -54,10 +60,10 @@ export class StpController {
     }
     static async deleteAll(req: Request, res: Response, next: NextFunction) {
         try {
-            await StpMain.destroy({ cascade: true, truncate: true })
+            await StpMain.destroy({ cascade: true, truncate: true, restartIdentity: true })
             return res.status(200).json("table cleared")
         } catch (error) {
-            console.log("___ __ Delete Error!")
+            console.log("_____ Delete Error!")
             next(error)
         }
 

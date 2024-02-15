@@ -4,8 +4,8 @@ import express from 'express'
 import { sequelize } from './DB/sequelize.js';
 import { User } from './DB/Models/User.js';
 import { GlassProps, StpMain } from './DB/Models/StpModel.js'
-import { routerTab } from './Router/routerApi.js';
-// import { cors } from 'cors'
+import { routerTab } from './Router/routerTab.js';
+import cors from 'cors'
 
 
 
@@ -32,7 +32,7 @@ const HOST = process.env.HOST
 const app = express();
 
 
-// app.use(cors())
+app.use(cors())
 app.use(express.json())
 app.use('/tab', routerTab)
 app.get('/', (request, response) => {
