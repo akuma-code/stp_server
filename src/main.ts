@@ -6,6 +6,8 @@ import { User } from './DB/Models/User.js';
 import { GlassProps, StpMain } from './DB/Models/StpModel.js'
 import { routerTab } from './Router/routerTab.js';
 import cors from 'cors'
+import path from 'path';
+import { router } from './Router/router.js';
 
 
 
@@ -34,11 +36,12 @@ const app = express();
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static(path.resolve(__dirname + '/build_client')));
 app.use('/tab', routerTab)
-app.get('/', (request, response) => {
-    response.send('Hello world!');
-});
-
+// app.get('/', (request, response) => {
+//     response.send('Hello world!');
+// });
+app.use('/', router)
 
 
 
