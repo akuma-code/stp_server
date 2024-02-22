@@ -1,9 +1,9 @@
 import { config } from 'dotenv'
 config()
 import express from 'express'
-import { sequelize } from './DB/sequelize.js';
-import { User } from './DB/Models/User.js';
-import { GlassProps, StpMain } from './DB/Models/StpModel.js'
+// import { sequelize } from './DB/sequelize.js';
+// import { User } from './DB/Models/User.js';
+// import { GlassProps, StpMain } from './DB/Models/StpModel.js'
 import { routerTab } from './Router/routerTab.js';
 import cors from 'cors'
 import path from 'path';
