@@ -48,12 +48,12 @@ app.use('/', router)
 
 async function LISTEN() {
     try {
-        await sequelize.authenticate()
-        await sequelize.sync({ alter: true })
+        // await sequelize.authenticate()
+        // await sequelize.sync({ alter: true })
         console.clear()
-        console.log('tableName:', User.tableName)
-        console.log('tableName:', StpMain.tableName)
-        console.log('tableName:', GlassProps.tableName)
+        // console.log('tableName:', User.tableName)
+        // console.log('tableName:', StpMain.tableName)
+        // console.log('tableName:', GlassProps.tableName)
         console.log('Connection has been established successfully.');
         app.listen(PORT, () => {
             console.log(`Running on ${HOST}:${PORT}`)
